@@ -64,7 +64,7 @@ def vectorization(X, Y, n_x, char_indices, Tx = 40):
     return x, y 
 
 
-def sample(preds, temperature=1.0):
+def sample(preds, temperature=0.2):
     # helper function to sample an index from a probability array
     preds = np.asarray(preds).astype('float64')
     preds = np.log(preds) / temperature
@@ -129,8 +129,8 @@ X, Y = build_data(text, Tx, stride = 3)
 print("Vectorizing training set...")
 x, y = vectorization(X, Y, n_x = len(chars), char_indices = char_indices) 
 print("Loading model...")
-model = load_model('models/model_shakespeare_kiank_350_epoch.h5')
-
+# model = load_model('models/model_shakespeare_kiank_350_epoch.h5')
+model = load_model('models/model_shakespeare_kiank_350_epoch.h5', compile=False)
 
 def generate_output():
     generated = ''
